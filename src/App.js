@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import LandingPage from "./components/LandingPage";
+import ForcastPage from "./components/ForcastPage";
+import DeadendPage from "./components/DeadendPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter basename="/meteomonitor_ReactJS">
+      <main className="main">
+        <Routes>
+          <Route path={"/"} element={<LandingPage />} />
+          <Route path={"/forcast/:locationKey"} element={<ForcastPage />} />
+          <Route path={"*"} element={<DeadendPage />} />
+        </Routes>
+      </main>
+
+      {/* {`lat: ${coords.lat}, long: ${coords.long}`} */}
+      {/* <div className="location-details">{`${location.locationName}, ${location.area}, ${location.country}`}</div> */}
+    </BrowserRouter>
   );
 }
 
