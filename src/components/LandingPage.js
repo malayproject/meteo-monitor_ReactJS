@@ -28,7 +28,7 @@ const LandingPage = ({ getNavbarProps }) => {
     console.log(coords);
     axios
       .get(
-        `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_API_KEY}&q=${coords.latitude},${coords.longitude}&language=en-us&details=false&toplevel=true`
+        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_API_KEY}&q=${coords.latitude},${coords.longitude}&language=en-us&details=false&toplevel=true`
       )
       .then((res) => {
         // console.log(res);
