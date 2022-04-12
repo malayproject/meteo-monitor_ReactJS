@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <HashRouter basename="/meteo-monitor_ReactJS">
+    <BrowserRouter basename="/meteo-monitor_ReactJS">
       <main className="main">
         <Navbar
           location={location}
@@ -47,7 +47,7 @@ function App() {
 
       {/* {`lat: ${coords.lat}, long: ${coords.long}`} */}
       {/* <div className="location-details">{`${location.locationName}, ${location.area}, ${location.country}`}</div> */}
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
