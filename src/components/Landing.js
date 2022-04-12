@@ -1,18 +1,11 @@
-import React from "react";
-import Navbar from "./Navbar";
+// import React, { useState } from "react";
+// import Navbar from "./Navbar";
 
-const Landing = ({ location, isLoading }) => {
-  return (
-    <div className="landing">
-      <Navbar location={location} isLoading={isLoading} />
-      {isLoading || (
-        <div className="landingRest">
-          {console.log(location)}
-          {location.locationName}, {location.area}, {location.country}
-        </div>
-      )}
-    </div>
-  );
-};
+// const Landing = ({ location, isLoading }) => {
+//   const [searchTerm, setSearchTerm] = useState("");
+//   return (
 
-export default Landing;
+//   );
+// };
+
+// export default Landing;
