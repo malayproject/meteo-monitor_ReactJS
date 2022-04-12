@@ -51,7 +51,7 @@ const LandingPage = ({ getNavbarProps }) => {
     try {
       axios
         .get(
-          `http://dataservice.accuweather.com/currentconditions/v1/${location.locationKey}?apikey=${process.env.REACT_APP_API_KEY}&details=true`
+          `https://dataservice.accuweather.com/currentconditions/v1/${location.locationKey}?apikey=${process.env.REACT_APP_API_KEY}&details=true`
         )
         .then((res) => {
           // console.log(res.data[0]);
@@ -178,7 +178,7 @@ const LandingPage = ({ getNavbarProps }) => {
       try {
         axios
           .get(
-            `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY}&q=${searchTerm}&language=en-us`
+            `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY}&q=${searchTerm}&language=en-us`
           )
           .then((res) => {
             console.log(res);

@@ -25,7 +25,7 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
     try {
       axios
         .get(
-          `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${process.env.REACT_APP_API_KEY}&details=true&metric=true`
+          `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${process.env.REACT_APP_API_KEY}&details=true&metric=true`
         )
         .then((res) => {
           console.log(res.data.DailyForecasts);
