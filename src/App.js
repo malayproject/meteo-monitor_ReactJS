@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter basename="/meteomonitor_ReactJS">
+    <BrowserRouter basename="/meteo-monitor_ReactJS">
       <main className="main">
         <Navbar
           location={location}
