@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/meteomonitor_ReactJS/static/css/main.0edbfcf6.css",
+    "main.js": "/meteomonitor_ReactJS/static/js/main.cea5d3bc.js",
+    "static/js/787.cf49067b.chunk.js": "/meteomonitor_ReactJS/static/js/787.cf49067b.chunk.js",
+    "static/media/1644243.jpg": "/meteomonitor_ReactJS/static/media/1644243.3c697c6cb9997d8b10b6.jpg",
+    "index.html": "/meteomonitor_ReactJS/index.html",
+    "main.0edbfcf6.css.map": "/meteomonitor_ReactJS/static/css/main.0edbfcf6.css.map",
+    "main.cea5d3bc.js.map": "/meteomonitor_ReactJS/static/js/main.cea5d3bc.js.map",
+    "787.cf49067b.chunk.js.map": "/meteomonitor_ReactJS/static/js/787.cf49067b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0edbfcf6.css",
+    "static/js/main.cea5d3bc.js"
+  ]
+}
