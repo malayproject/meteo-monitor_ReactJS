@@ -8,7 +8,7 @@ const RiseSet = ({ sun, moon, getLocalTime }) => {
         <div className="footer">
           <div className="left">
             <div className="first">
-              <img src="./images/weatherIcons/_1.png" alt="sun img" />
+              <img src="./images/weatherIcons/1.png" alt="sun img" />
               <div className="period">
                 <span className="hours">
                   {Math.floor((sun.EpochSet - sun.EpochRise) / 3600)} hrs
@@ -38,7 +38,7 @@ const RiseSet = ({ sun, moon, getLocalTime }) => {
           </div>
           <div className="right">
             <div className="first">
-              <img src="./images/weatherIcons/_1.png" alt="moon img" />
+              <img src="./images/weatherIcons/33.png" alt="moon img" />
               <div className="period">
                 <span className="hours">
                   {Math.floor((moon.EpochSet - moon.EpochRise) / 3600)} hrs

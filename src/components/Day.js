@@ -13,7 +13,7 @@ const Day = ({ data, getLocalTime }) => {
           <div className="left">
             <div className="icon-temp">
               <img
-                src={`./images/weatherIcons/_${data.Day.Icon}.png`}
+                src={`./images/weatherIcons/${data.Day.Icon}.png`}
                 className={"icon"}
               />
               <div className="temp">

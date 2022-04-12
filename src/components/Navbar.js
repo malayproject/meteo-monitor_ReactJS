@@ -27,7 +27,7 @@ const Navbar = ({ location, isLoading, currentCondition }) => {
             </span>
             {/* <img src={"./images/rainy.svg"} /> */}
             <img
-              src={`./images/weatherIcons/_${currentCondition.weatherIcon}.png`}
+              src={`./images/weatherIcons/${currentCondition.weatherIcon}.png`}
             />
           </div>
         )}

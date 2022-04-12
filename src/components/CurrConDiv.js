@@ -21,7 +21,7 @@ const CurrConDiv = ({ locationKey, currentCondition }) => {
           <div className="time">{getLocalTime(currentCondition.dateTime)}</div>
           <div className="icon-temp">
             <img
-              src={`./images/weatherIcons/_${currentCondition.weatherIcon}.png`}
+              src={`./images/weatherIcons/${currentCondition.weatherIcon}.png`}
               className={"icon"}
             />
             <div className="temp">
