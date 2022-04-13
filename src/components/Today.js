@@ -22,7 +22,7 @@ const Today = ({
             <div className="left">
               <div className="icon-temp">
                 <img
-                  src={`./images/weatherIcons/${currentCondition.weatherIcon}.png`}
+                  src={`../../images/weatherIcons/${currentCondition.weatherIcon}.png`}
                   className={"icon"}
                 />
                 <div className="temp">
@@ -33,11 +33,9 @@ const Today = ({
                     </span>
                     {currentCondition.temperature?.metric?.unit.toLowerCase()}
                   </div>
-                  <div className="weather-text">
-                    {currentCondition.weatherText}
-                  </div>
                 </div>
               </div>
+              <div className="weather-text">{currentCondition.weatherText}</div>
             </div>
             <div className="right">
               <div className="real-feel">

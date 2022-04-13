@@ -16,7 +16,7 @@ const SearchCon = () => {
       try {
         axios
           .get(
-            `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY2}&q=${searchTerm}&language=en-us`
+            `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY1}&q=${searchTerm}&language=en-us`
           )
           .then((res) => {
             console.log(res);

@@ -9,7 +9,7 @@ const Navbar = ({ location, isLoading, currentCondition }) => {
       <div className="left">
         <Link to="/" className={"logo-name"}>
           <img
-            src={"./images/AppLogo.svg"}
+            src={"../../images/AppLogo.svg"}
             alt="cloud pic"
             className="logoImg hoverable"
           />
@@ -27,7 +27,7 @@ const Navbar = ({ location, isLoading, currentCondition }) => {
             </span>
             {/* <img src={"./images/rainy.svg"} /> */}
             <img
-              src={`./images/weatherIcons/${currentCondition.weatherIcon}.png`}
+              src={`../../images/weatherIcons/${currentCondition.weatherIcon}.png`}
             />
           </div>
         )}
