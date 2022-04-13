@@ -3,16 +3,16 @@ import Day from "./Day";
 import Night from "./Night";
 import RiseSet from "./RiseSet";
 
-const OneDayCon = ({ dayForecast, getLocalTime }) => {
+const OneDayCon = ({ dayForecast, getLocalDateTime }) => {
   return (
     <div className="oneDayCon">
       {console.log(dayForecast)}
-      <Day data={dayForecast} getLocalTime={getLocalTime} />
-      <Night data={dayForecast} getLocalTime={getLocalTime} />
+      <Day data={dayForecast} getLocalDateTime={getLocalDateTime} />
+      <Night data={dayForecast} getLocalDateTime={getLocalDateTime} />
       <RiseSet
         sun={dayForecast.Sun}
         moon={dayForecast.Moon}
-        getLocalTime={getLocalTime}
+        getLocalDateTime={getLocalDateTime}
       />
     </div>
   );

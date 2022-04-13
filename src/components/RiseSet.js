@@ -1,10 +1,13 @@
 import React from "react";
 
-const RiseSet = ({ sun, moon, getLocalTime }) => {
+const RiseSet = ({ sun, moon, getLocalDateTime }) => {
   return (
     <div className="riseSet">
       <div className="riseSetDetailDiv dNRDetailDiv">
-        <div className="header">RISE/SET</div>
+        <div className="header">
+          <div className="name">RISE/SET</div>
+          <div className="time">{getLocalDateTime(sun.Rise, true)}</div>
+        </div>
         <div className="footer">
           <div className="left">
             <div className="first">
@@ -26,13 +29,13 @@ const RiseSet = ({ sun, moon, getLocalTime }) => {
             <div className="rise">
               Rise{" "}
               <div className="value">
-                <span>{getLocalTime(sun.Rise)}</span>
+                <span>{getLocalDateTime(sun.Rise, false)}</span>
               </div>
             </div>
             <div className="set">
               Set{" "}
               <div className="value">
-                <span>{getLocalTime(sun.Set)}</span>
+                <span>{getLocalDateTime(sun.Set, false)}</span>
               </div>
             </div>
           </div>
@@ -56,13 +59,13 @@ const RiseSet = ({ sun, moon, getLocalTime }) => {
             <div className="rise">
               Rise
               <div className="value">
-                <span>{getLocalTime(moon.Rise)}</span>
+                <span>{getLocalDateTime(moon.Rise)}</span>
               </div>
             </div>
             <div className="set">
               Set
               <div className="value">
-                <span>{getLocalTime(moon.Set)}</span>
+                <span>{getLocalDateTime(moon.Set)}</span>
               </div>
             </div>
           </div>

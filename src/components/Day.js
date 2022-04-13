@@ -1,13 +1,13 @@
 import React from "react";
 import { FaArrowsAltH, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
-const Day = ({ data, getLocalTime }) => {
+const Day = ({ data, getLocalDateTime }) => {
   return (
     <div className="day">
       <div className="dayDetailDiv dNRDetailDiv">
         <div className="header">
           <div className="name">DAY</div>
-          <div className="time">{getLocalTime(data.Date)}</div>
+          <div className="time">{getLocalDateTime(data.Date, true)}</div>
         </div>
         <div className="middle">
           <div className="left">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import OneDayCon from "./OneDayCon";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-const Daily = ({ locationKey, fiveDForecast, getLocalTime }) => {
+const Daily = ({ locationKey, fiveDForecast, getLocalDateTime }) => {
   const [currDay, setCurrDay] = useState(null);
 
   const handleDay = (change) => {
@@ -49,7 +49,7 @@ const Daily = ({ locationKey, fiveDForecast, getLocalTime }) => {
           )}
         </div>
         <OneDayCon
-          getLocalTime={getLocalTime}
+          getLocalDateTime={getLocalDateTime}
           dayForecast={fiveDForecast[currDay.dayCount]}
         />
       </div>

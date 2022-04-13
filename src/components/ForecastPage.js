@@ -9,8 +9,12 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
   const { locationKey } = useParams();
   const [fiveDForecasts, setFiveDForecasts] = useState(null);
 
-  const getLocalTime = (dateTime) => {
+  const getLocalDateTime = (dateTime, getDate) => {
     if (!dateTime) return "";
+    if (getDate) {
+      let date = dateTime.slice(5, 10).split("-").join("/");
+      return date;
+    }
     let hrsin24 = dateTime.slice(11, 13);
     let temp =
       hrsin24 > 12
@@ -25,7 +29,7 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
     try {
       axios
         .get(
-          `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${process.env.REACT_APP_API_KEY2}&details=true&metric=true`
+          `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${process.env.REACT_APP_API_KEY}&details=true&metric=true`
         )
         .then((res) => {
           console.log(res.data.DailyForecasts);
@@ -42,7 +46,7 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
       if (currentCondition) return;
       axios
         .get(
-          `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${process.env.REACT_APP_API_KEY2}&details=true`
+          `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${process.env.REACT_APP_API_KEY}&details=true`
         )
         .then((res) => {
           // console.log(res.data[0]);
@@ -169,9 +173,9 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
         <NavLink to={"today"} className="today">
           TODAY
         </NavLink>
-        <NavLink to={"hourly"} className="hourly">
+        {/* <NavLink to={"hourly"} className="hourly">
           HOURLY
-        </NavLink>
+        </NavLink> */}
         <NavLink to={"daily"} className="daily">
           DAILY
         </NavLink>
@@ -186,12 +190,12 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
                 locationKey={locationKey}
                 currentCondition={currentCondition}
                 todayForecast={fiveDForecasts[0]}
-                getLocalTime={getLocalTime}
+                getLocalDateTime={getLocalDateTime}
               />
             )
           }
         />
-        <Route path={"hourly"} element={<Hourly />} />
+        {/* <Route path={"hourly"} element={<Hourly />} /> */}
         <Route
           path={"daily"}
           element={
@@ -199,7 +203,7 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
               <Daily
                 locationKey={locationKey}
                 fiveDForecast={fiveDForecasts}
-                getLocalTime={getLocalTime}
+                getLocalDateTime={getLocalDateTime}
               />
             )
           }

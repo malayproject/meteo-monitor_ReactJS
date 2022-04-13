@@ -3,7 +3,7 @@ import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const CurrConDiv = ({ locationKey, currentCondition }) => {
-  const getLocalTime = (dateTime) => {
+  const getLocalDateTime = (dateTime) => {
     let hrsin24 = dateTime.slice(11, 13);
     let temp =
       hrsin24 > 12
@@ -18,7 +18,9 @@ const CurrConDiv = ({ locationKey, currentCondition }) => {
       CURRENT WEATHER
       <div className="content">
         <div className="left">
-          <div className="time">{getLocalTime(currentCondition.dateTime)}</div>
+          <div className="time">
+            {getLocalDateTime(currentCondition.dateTime, false)}
+          </div>
           <div className="icon-temp">
             <img
               src={`./images/weatherIcons/${currentCondition.weatherIcon}.png`}

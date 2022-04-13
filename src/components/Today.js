@@ -6,7 +6,7 @@ const Today = ({
   locationKey,
   currentCondition,
   todayForecast,
-  getLocalTime,
+  getLocalDateTime,
 }) => {
   return (
     <div className="todayCon">
@@ -15,7 +15,7 @@ const Today = ({
           <div className="header">
             <div className="name">CURRENT WEATHER</div>
             <div className="time">
-              {getLocalTime(currentCondition.dateTime)}
+              {getLocalDateTime(currentCondition.dateTime)}
             </div>
           </div>
           <div className="middle">
@@ -151,7 +151,10 @@ const Today = ({
         </div>
       )}
       {todayForecast && (
-        <OneDayCon dayForecast={todayForecast} getLocalTime={getLocalTime} />
+        <OneDayCon
+          dayForecast={todayForecast}
+          getLocalDateTime={getLocalDateTime}
+        />
       )}
     </div>
   );
