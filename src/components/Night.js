@@ -3,7 +3,7 @@ import { FaArrowsAltH, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 const Night = ({ data, getLocalDateTime }) => {
   return (
-    <div className="night">
+    <div className="night tile">
       <div className="nightDetailDiv dNRDetailDiv">
         <div className="header">
           <div className="name">NIGHT</div>

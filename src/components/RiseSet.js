@@ -2,7 +2,7 @@ import React from "react";
 
 const RiseSet = ({ sun, moon, getLocalDateTime }) => {
   return (
-    <div className="riseSet">
+    <div className="riseSet tile">
       <div className="riseSetDetailDiv dNRDetailDiv">
         <div className="header">
           <div className="name">RISE/SET</div>

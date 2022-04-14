@@ -5,7 +5,7 @@ import Hourly from "./Hourly";
 import Daily from "./Daily";
 import axios from "axios";
 
-const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
+const ForecastPage = ({ currentCondition, setCurrentCondition, keyNo }) => {
   const { locationKey } = useParams();
   const [fiveDForecasts, setFiveDForecasts] = useState(null);
 
@@ -31,7 +31,9 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
     try {
       axios
         .get(
-          `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${process.env.REACT_APP_API_KEY1}&details=true&metric=true`
+          `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${
+            process.env[`REACT_APP_API_KEY${keyNo}`]
+          }&details=true&metric=true`
         )
         .then((res) => {
           console.log(res.data.DailyForecasts);
@@ -48,7 +50,9 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
       if (currentCondition) return;
       axios
         .get(
-          `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${process.env.REACT_APP_API_KEY1}&details=true`
+          `https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${
+            process.env[`REACT_APP_API_KEY${keyNo}`]
+          }&details=true`
         )
         .then((res) => {
           // console.log(res.data[0]);
@@ -171,17 +175,20 @@ const ForecastPage = ({ currentCondition, setCurrentCondition }) => {
 
   return (
     <div className="forecastPage">
-      <div className="forecastBar">
-        <NavLink to={"today"} className="today">
-          TODAY
-        </NavLink>
-        {/* <NavLink to={"hourly"} className="hourly">
+      <div className="forecastBarCon">
+        <div className="forecastBar">
+          <NavLink to={"today"} className="today">
+            TODAY
+          </NavLink>
+          {/* <NavLink to={"hourly"} className="hourly">
           HOURLY
         </NavLink> */}
-        <NavLink to={"daily"} className="daily">
-          DAILY
-        </NavLink>
+          <NavLink to={"daily"} className="daily">
+            DAILY
+          </NavLink>
+        </div>
       </div>
+
       {console.log(fiveDForecasts)}
       <Routes>
         <Route

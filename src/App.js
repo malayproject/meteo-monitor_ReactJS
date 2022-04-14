@@ -12,6 +12,7 @@ function App() {
   const [location, setLocation] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [currentCondition, setCurrentCondition] = useState(null);
+  const keyNo = Math.floor(Math.random() * 10);
 
   const getNavbarProps = (location, isLoading, currentCondition) => {
     setIsLoading(isLoading);
@@ -30,7 +31,9 @@ function App() {
         <Routes>
           <Route
             path={"/"}
-            element={<LandingPage getNavbarProps={getNavbarProps} />}
+            element={
+              <LandingPage getNavbarProps={getNavbarProps} keyNo={keyNo} />
+            }
           />
           <Route
             path={"/forecast/:locationKey/*"}
@@ -38,6 +41,7 @@ function App() {
               <ForecastPage
                 currentCondition={currentCondition}
                 setCurrentCondition={setCurrentCondition}
+                keyNo={keyNo}
               />
             }
           />

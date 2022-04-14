@@ -6,7 +6,7 @@ import SearchResults from "./SearchResults";
 
 import CurrConDiv from "./CurrConDiv";
 
-const LandingPage = ({ getNavbarProps }) => {
+const LandingPage = ({ getNavbarProps, keyNo }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [location, setLocation] = useState({
     area: "Delhi",
@@ -26,9 +26,14 @@ const LandingPage = ({ getNavbarProps }) => {
     console.log("lat: ", coords.latitude);
     console.log("long: ", coords.longitude);
     console.log(coords);
+
     axios
       .get(
-        `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${process.env.REACT_APP_API_KEY1}&q=${coords.latitude},${coords.longitude}&language=en-us&details=false&toplevel=true`
+        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${
+          process.env[`REACT_APP_API_KEY${keyNo}`]
+        }&q=${coords.latitude},${
+          coords.longitude
+        }&language=en-us&details=false&toplevel=true`
       )
       .then((res) => {
         // console.log(res);
@@ -51,7 +56,9 @@ const LandingPage = ({ getNavbarProps }) => {
     try {
       axios
         .get(
-          `http://dataservice.accuweather.com/currentconditions/v1/${location.locationKey}?apikey=${process.env.REACT_APP_API_KEY1}&details=true`
+          `https://dataservice.accuweather.com/currentconditions/v1/${
+            location.locationKey
+          }?apikey=${process.env[`REACT_APP_API_KEY${keyNo}`]}&details=true`
         )
         .then((res) => {
           // console.log(res.data[0]);
@@ -178,7 +185,9 @@ const LandingPage = ({ getNavbarProps }) => {
       try {
         axios
           .get(
-            `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY1}&q=${searchTerm}&language=en-us`
+            `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${
+              process.env[`REACT_APP_API_KEY${keyNo}`]
+            }&q=${searchTerm}&language=en-us`
           )
           .then((res) => {
             console.log(res);

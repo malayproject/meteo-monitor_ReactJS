@@ -104,7 +104,7 @@ a {
   align-items: center;
   gap: clamp(0.1rem, 1vw, 0.3rem);
   background-color: rgba(255, 255, 255, 0.685);
-  width: max(22rem, 45%);
+  width: clamp(22rem, 90%, 50rem);
   height: 4rem;
   border-radius: 0.3rem;
   padding: 0.5rem;
@@ -185,7 +185,7 @@ a {
 }
 
 .currCondDiv {
-  width: max(22rem, 45%);
+  width: clamp(22rem, 90%, 50rem);
   height: 20rem;
   background-color: rgb(214, 214, 214);
   padding: 1rem 1rem;
@@ -222,19 +222,21 @@ a {
 .icon-temp {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 70%;
   /* background-color: pink; */
 }
 
 .icon-temp .icon {
-  width: 50%;
-  height: 85%;
+  width: 10rem;
+  height: 6rem;
   /* background-color: aqua; */
 }
 .icon-temp .temp {
   width: 50%;
+    /* background-color: aqua;  */
+    justify-content: right;
 }
 
 .temp .actual {
@@ -317,33 +319,52 @@ a {
   /* background-color: antiquewhite; */
 }
 
+.forecastBarCon {
+  width: 100vw;
+  height: 3rem;
+  background-color: rgb(82, 82, 82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .forecastBar {
+  width: clamp(22rem, 90%, 50rem);
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* gap: 2rem; */
-  width: 100vw;
-  height: 3rem;
-  padding: 0 clamp(1rem, 10vw, 15rem);
-  background-color: rgb(255, 255, 255);
+  /* background-color: aliceblue; */
+  gap: 0.2rem;
+  
 }
 .forecastBar > * {
   font-size: 1.1rem;
+  color: white;
   width: 8rem;
   height: 100%;
   letter-spacing: 0.05rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: aqua; */
+  border-radius: 0.7rem 0.7rem 0 0;
   /* border: 1px solid black; */
-  font-weight: 300;
-  color: rgb(0, 0, 0);
+
+  font-weight: 400;
+  /* color: rgb(0, 0, 0); */
 }
 .forecastBar .active {
   color: rgb(0, 0, 0);
   /* background-color: aquamarine; */
-  font-weight: 500;
+    background-color: rgb(228, 228, 228);
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  transition: background-color 0.2s ease-out
+}
+.forecastBar :not(.active):hover{
+  /* font-size: 2rem; */
+  background-color: rgb(131, 131, 131);
+  transition: all 0.2s ease-out
 }
 
 .todayCon,
@@ -488,14 +509,6 @@ a {
   align-items: center;
 }
 
-.oneDayCon > * {
-  width: clamp(22rem, 55%, 50rem);
-  padding: 0.5rem 1rem;
-  border-radius: 0.4rem;
-  background-color: rgb(255, 255, 255);
-  margin-top: 2rem;
-}
-
 .dNRDetailDiv .header {
   width: 100%;
   display: flex;
@@ -528,7 +541,6 @@ a {
 
 .dNRDetailDiv .middle .right {
   width: 50%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -572,14 +584,16 @@ a {
 }
 
 .dNRDetailDiv .first img {
-  width: 40%;
-  height: 100%;
-    /* background-color: aqua; */
+  width: 6rem;
+  height: 3.5rem;
+  /* background-color: aqua; */
 }
 
 .first .period {
   display: flex;
   flex-direction: column;
+  /* background-color: aqua; */
+  /* padding-right: 3rem; */
 }
 
 .first .period * {
@@ -589,7 +603,7 @@ a {
 }
 
 .dailyCon .navigatorDiv {
-  width: clamp(22rem, 55%, 50rem);
+  width: clamp(22rem, 90%, 50rem);
   height: 2rem;
   display: flex;
   flex-direction: row;
@@ -600,8 +614,20 @@ a {
   border-bottom: 0.1rem solid rgb(173, 173, 173);
 }
 
-.dailyCon .navigatorDiv {
+.tile{
+  box-shadow: 0.1rem 0.3rem 0.5rem rgb(139, 139, 139);
+  width: clamp(22rem, 90%, 50rem);
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  background-color: rgb(255, 255, 255);
+  margin-top: 2rem;
 }
+
+.tile:hover{
+  box-shadow: 0.2rem 0.6rem 0.8rem rgb(175, 175, 175);
+  transition: box-shadow 0.2s ease-out;
+}
+
 
 @media screen and (max-width: 900px) {
   .brandName {
