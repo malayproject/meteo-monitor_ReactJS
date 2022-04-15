@@ -6,7 +6,7 @@ import RiseSet from "./RiseSet";
 const OneDayCon = ({ dayForecast, getLocalDateTime }) => {
   return (
     <div className="oneDayCon">
-      {console.log(dayForecast)}
+      {/* {console.log(dayForecast)} */}
       <Day data={dayForecast} getLocalDateTime={getLocalDateTime} />
       <Night data={dayForecast} getLocalDateTime={getLocalDateTime} />
       <RiseSet

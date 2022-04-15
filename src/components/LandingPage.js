@@ -6,14 +6,14 @@ import SearchResults from "./SearchResults";
 
 import CurrConDiv from "./CurrConDiv";
 
-const LandingPage = ({ getNavbarProps, keyNo }) => {
+const LandingPage = ({
+  getNavbarProps,
+  location,
+  setLocation,
+  keyNo,
+  isMetric,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [location, setLocation] = useState({
-    area: "Delhi",
-    country: "IN",
-    locationKey: "202396",
-    locationName: "Delhi",
-  });
   const [currentCondition, setCurrentCondition] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [recommendations, setRecommendations] = useState([]);
@@ -22,10 +22,15 @@ const LandingPage = ({ getNavbarProps, keyNo }) => {
   const searchResultsEl = useRef(null);
   const searchBarConEl = useRef(null);
 
+  const getSearchBarOnFocus = () => {
+    setIsSearchResultsShown(true);
+    searchBarConEl.current.classList.add("on-focus");
+  };
+
   const showPosition = ({ coords }) => {
-    console.log("lat: ", coords.latitude);
-    console.log("long: ", coords.longitude);
-    console.log(coords);
+    // console.log("lat: ", coords.latitude);
+    // console.log("long: ", coords.longitude);
+    // console.log(coords);
 
     axios
       .get(
@@ -173,6 +178,7 @@ const LandingPage = ({ getNavbarProps, keyNo }) => {
             uvIndex: rawdata.UVIndex,
             uvIndexText: rawdata.UVIndexText,
           });
+          setIsLoading(false);
         });
     } catch (error) {
       console.log(error);
@@ -180,7 +186,7 @@ const LandingPage = ({ getNavbarProps, keyNo }) => {
   }, [location]);
 
   useEffect(() => {
-    console.log(searchTerm);
+    // console.log(searchTerm);
     if (searchTerm) {
       try {
         axios
@@ -210,15 +216,16 @@ const LandingPage = ({ getNavbarProps, keyNo }) => {
     try {
       getCurrentLocation();
       window.addEventListener("click", (e) => {
-        console.dir(e.target);
+        // console.dir(e.target);
         if (
           searchBarConEl.current &&
           !searchBarConEl.current.contains(e.target)
         ) {
-          console.log("hello");
+          // console.log("hello");
           setIsSearchResultsShown(false);
           searchBarConEl.current.classList.remove("on-focus");
         }
+        setIsLoading(false);
       });
     } catch (error) {
       console.log(error);
@@ -226,55 +233,54 @@ const LandingPage = ({ getNavbarProps, keyNo }) => {
   }, []);
 
   return (
-    <div className="landingPage">
-      {console.log(isSearchResultsShown)}
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div className="landing">
-          {isLoading || (
-            <div className="landingRest">
-              {/* {console.log(searchTerm)} */}
-              <div className="searchBarCon" ref={searchBarConEl}>
-                <img src={"./images/search.svg"} />
-                <label htmlFor="browser"></label>
-                <input
-                  type="text"
-                  value={searchTerm}
-                  placeholder={"Search"}
-                  onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                  }}
-                  onClick={() => {
-                    setIsSearchResultsShown(true);
-                    searchBarConEl.current.classList.add("on-focus");
-                  }}
-                  name="browser"
-                  autoComplete="true"
-                />
+    location && (
+      <div className="landingPage">
+        {/* {console.log(isSearchResultsShown)} */}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <div className="landing">
+            {isLoading || (
+              <div className="landingRest">
+                {/* {console.log(searchTerm)} */}
+                <div className="searchBarCon" ref={searchBarConEl}>
+                  <img src={"./images/search.svg"} />
+                  <label htmlFor="browser"></label>
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    placeholder={"Search"}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                    }}
+                    onClick={getSearchBarOnFocus}
+                    name="browser"
+                    autoComplete="true"
+                  />
+                </div>
+                {isSearchResultsShown && (
+                  <SearchResults
+                    recommendations={recommendations}
+                    setLocation={setLocation}
+                    location={location}
+                    getCurrentLocation={getCurrentLocation}
+                    setSearchTerm={setSearchTerm}
+                    ref={searchResultsEl}
+                  />
+                )}
+                {currentCondition && (
+                  <CurrConDiv
+                    locationKey={location.locationKey}
+                    currentCondition={currentCondition}
+                    isMetric={isMetric}
+                  />
+                )}
               </div>
-              {isSearchResultsShown && (
-                <SearchResults
-                  recommendations={recommendations}
-                  setLocation={setLocation}
-                  location={location}
-                  getCurrentLocation={getCurrentLocation}
-                  setSearchTerm={setSearchTerm}
-                  ref={searchResultsEl}
-                />
-              )}
-              {currentCondition && (
-                <CurrConDiv
-                  locationKey={location.locationKey}
-                  currentCondition={currentCondition}
-                />
-              )}
-            </div>
-          )}
-        </div>
-      )}
-      ;
-    </div>
+            )}
+          </div>
+        )}
+      </div>
+    )
   );
 };
 

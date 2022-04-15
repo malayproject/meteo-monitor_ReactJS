@@ -26,11 +26,12 @@ const Daily = ({ locationKey, fiveDForecast, getLocalDateTime }) => {
   return (
     currDay && (
       <div className={"dailyCon"}>
-        {console.log(currDay)}
+        {/* {console.log(currDay)} */}
         <div className="navigatorDiv">
           {currDay.dayCount !== 0 ? (
             <FaAngleLeft
               onClick={() => handleDay(-1)}
+              className={"hoverable"}
               style={{ fontSize: "2rem" }}
             />
           ) : (
@@ -42,6 +43,7 @@ const Daily = ({ locationKey, fiveDForecast, getLocalDateTime }) => {
           {currDay.dayCount !== 4 ? (
             <FaAngleRight
               onClick={() => handleDay(1)}
+              className={"hoverable"}
               style={{ fontSize: "2rem" }}
             />
           ) : (

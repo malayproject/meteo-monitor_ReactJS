@@ -18,11 +18,19 @@ const Night = ({ data, getLocalDateTime }) => {
               />
               <div className="temp">
                 <div className="actual">
-                  <span>
-                    {Math.round(data.Temperature.Minimum.Value)}
-                    &#176;
-                  </span>
-                  {data.Temperature.Minimum.Unit.toLowerCase()}Lo
+                  <span>{Math.round(data.Temperature.Minimum.Value)}</span>
+                  <div className="tempUnit">
+                    <div className="degCon">
+                      <img
+                        src="/meteo-monitor_ReactJS/images/Degree.svg"
+                        className="deg"
+                      />
+                    </div>
+                    <div className="unitCOrF">
+                      &ensp;
+                      {data.Temperature.Maximum.Unit.toLowerCase()}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaArrowsAltH, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import Loading from "./Loading";
 import OneDayCon from "./OneDayCon";
 
 const Today = ({
@@ -7,11 +8,14 @@ const Today = ({
   currentCondition,
   todayForecast,
   getLocalDateTime,
+  isMetric,
 }) => {
+  const unitVal = isMetric ? "metric" : "imperial";
+
   return (
     <div className="todayCon">
       {currentCondition && (
-        <div className="currConDetailDiv tile">
+        <div className="currConDetailDiv tile dark">
           <div className="header">
             <div className="name">CURRENT WEATHER</div>
             <div className="time">
@@ -28,10 +32,22 @@ const Today = ({
                 <div className="temp">
                   <div className="actual">
                     <span>
-                      {Math.round(currentCondition.temperature?.metric?.value)}
-                      &#176;
+                      {Math.round(currentCondition.temperature[unitVal].value)}
                     </span>
-                    {currentCondition.temperature?.metric?.unit.toLowerCase()}
+                    <div className="tempUnit">
+                      <div className="deg">
+                        <img
+                          src="/meteo-monitor_ReactJS/images/Degree.svg"
+                          className="deg"
+                        />
+                      </div>
+                      <div className="unitCOrF">
+                        &nbsp;&nbsp;
+                        {currentCondition.temperature[
+                          unitVal
+                        ].unit.toLowerCase()}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -42,26 +58,30 @@ const Today = ({
                 <div className="top">
                   RealFeel&reg;&ensp;
                   {Math.round(
-                    currentCondition.realFeelTemperature?.metric.value
+                    currentCondition.realFeelTemperature[unitVal].value
                   )}
                   &#176;
-                  {currentCondition.realFeelTemperature?.metric.unit.toLowerCase()}
+                  {currentCondition.realFeelTemperature[
+                    unitVal
+                  ].unit.toLowerCase()}
                 </div>
                 <span className="bottom">
-                  {currentCondition.realFeelTemperatureShade?.metric.phrase}
+                  {currentCondition.realFeelTemperatureShade[unitVal].phrase}
                 </span>
               </div>
               <div className="real-feel-shade">
                 <div className="top">
                   RealFeelShade&reg;&ensp;
                   {Math.round(
-                    currentCondition.realFeelTemperatureShade?.metric.value
+                    currentCondition.realFeelTemperatureShade[unitVal].value
                   )}
                   &#176;
-                  {currentCondition.realFeelTemperatureShade?.metric.unit.toLowerCase()}
+                  {currentCondition.realFeelTemperatureShade[
+                    unitVal
+                  ].unit.toLowerCase()}
                 </div>
                 <span className="bottom">
-                  {currentCondition.realFeelTemperatureShade?.metric.phrase}
+                  {currentCondition.realFeelTemperatureShade[unitVal].phrase}
                 </span>
               </div>
             </div>
@@ -71,17 +91,17 @@ const Today = ({
               <div className="wind">
                 <div>Wind</div>
                 <div className="value">
-                  {currentCondition.wind?.metric.direction.English}
+                  {currentCondition.wind[unitVal].direction.English}
                   &ensp;
-                  {currentCondition.wind?.metric.value}&nbsp;
-                  {currentCondition.wind?.metric.unit}
+                  {currentCondition.wind[unitVal].value}&nbsp;
+                  {currentCondition.wind[unitVal].unit}
                 </div>
               </div>
               <div className="windGust">
                 <div>Wind Gust</div>
                 <div className="value">
-                  {currentCondition.wind?.metric.value}&nbsp;
-                  {currentCondition.wind?.metric.unit}
+                  {currentCondition.wind[unitVal].value}&nbsp;
+                  {currentCondition.wind[unitVal].unit}
                 </div>
               </div>
               <div className="relativeHumidity">
@@ -99,8 +119,8 @@ const Today = ({
               <div className="duePoint">
                 <div>Dew Point</div>
                 <div className="value">
-                  {currentCondition.duePoint?.metric.value}&nbsp;&#176;
-                  {currentCondition.duePoint?.metric.unit.toLowerCase()}
+                  {currentCondition.duePoint[unitVal].value}&nbsp;&#176;
+                  {currentCondition.duePoint[unitVal].unit.toLowerCase()}
                 </div>
               </div>
             </div>
@@ -116,8 +136,8 @@ const Today = ({
                     <FaArrowsAltH />
                   )}
                   &ensp;
-                  {currentCondition.pressure?.metric.value}&nbsp;
-                  {currentCondition.pressure?.metric.unit}
+                  {currentCondition.pressure[unitVal].value}&nbsp;
+                  {currentCondition.pressure[unitVal].unit}
                 </div>
               </div>
               <div className="uvIndex">
@@ -133,15 +153,15 @@ const Today = ({
               <div className="cloudCeiling">
                 <div>Cloud Ceiling</div>
                 <div className="value">
-                  {currentCondition.cloudCeiling?.metric.value}&nbsp;
-                  {currentCondition.cloudCeiling?.metric.unit}
+                  {currentCondition.cloudCeiling[unitVal].value}&nbsp;
+                  {currentCondition.cloudCeiling[unitVal].unit}
                 </div>
               </div>
               <div className="visibility">
                 <div>Visibility</div>
                 <div className="value">
-                  {currentCondition.visibility?.metric.value}&nbsp;
-                  {currentCondition.visibility?.metric.unit}
+                  {currentCondition.visibility[unitVal].value}&nbsp;
+                  {currentCondition.visibility[unitVal].unit}
                 </div>
               </div>
             </div>

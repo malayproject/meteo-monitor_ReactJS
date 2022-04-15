@@ -2,14 +2,16 @@ import React from "react";
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const CurrConDiv = ({ locationKey, currentCondition }) => {
+const CurrConDiv = ({ locationKey, currentCondition, isMetric }) => {
+  const unitVal = isMetric ? "metric" : "imperial";
+
   const getLocalDateTime = (dateTime) => {
     let hrsin24 = dateTime.slice(11, 13);
     let temp =
       hrsin24 > 12
         ? `${hrsin24 - 12}${dateTime.slice(13, 16)} PM`
         : `${hrsin24}${dateTime.slice(13, 16)} AM`;
-    console.log(temp);
+    // console.log(temp);
     return temp;
   };
 
@@ -29,16 +31,27 @@ const CurrConDiv = ({ locationKey, currentCondition }) => {
             <div className="temp">
               <div className="actual">
                 <span>
-                  {Math.round(currentCondition.temperature.metric.value)}
-                  &#176;
+                  {Math.round(currentCondition.temperature[unitVal].value)}
                 </span>
-                {currentCondition.temperature.metric.unit.toLowerCase()}
+                <div className="tempUnit">
+                  <div className="degCon">
+                    <img src="./images/Degree.svg" className="deg" />
+                  </div>
+                  <div className="unitCOrF">
+                    &nbsp;&nbsp;
+                    {currentCondition.temperature[unitVal].unit.toLowerCase()}
+                  </div>
+                </div>
               </div>
               <div className="real-feel">
                 RealFeel&reg;
-                {Math.round(currentCondition.realFeelTemperature.metric.value)}
+                {Math.round(
+                  currentCondition.realFeelTemperature[unitVal].value
+                )}
                 &#176;
-                {currentCondition.realFeelTemperature.metric.unit.toLowerCase()}
+                {currentCondition.realFeelTemperature[
+                  unitVal
+                ].unit.toLowerCase()}
               </div>
             </div>
           </div>
@@ -47,10 +60,10 @@ const CurrConDiv = ({ locationKey, currentCondition }) => {
           <div className="wind">
             <div>Wind</div>
             <div className="value">
-              {currentCondition.wind.metric.direction.English}
+              {currentCondition.wind[unitVal].direction.English}
               &ensp;
-              {currentCondition.wind.metric.value}&nbsp;
-              {currentCondition.wind.metric.unit}
+              {currentCondition.wind[unitVal].value}&nbsp;
+              {currentCondition.wind[unitVal].unit}
             </div>
           </div>
           <div className="humidity">
@@ -61,8 +74,8 @@ const CurrConDiv = ({ locationKey, currentCondition }) => {
             <div>Visibility</div>
             <div className="value">
               {" "}
-              {currentCondition.visibility.metric.value}&nbsp;
-              {currentCondition.visibility.metric.unit}
+              {currentCondition.visibility[unitVal].value}&nbsp;
+              {currentCondition.visibility[unitVal].unit}
             </div>
           </div>
         </div>

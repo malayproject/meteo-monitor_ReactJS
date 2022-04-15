@@ -3,11 +3,18 @@ import { useParams, NavLink, Routes, Route } from "react-router-dom";
 import Today from "./Today";
 import Hourly from "./Hourly";
 import Daily from "./Daily";
+import Loading from "./Loading";
 import axios from "axios";
 
-const ForecastPage = ({ currentCondition, setCurrentCondition, keyNo }) => {
+const ForecastPage = ({
+  currentCondition,
+  setCurrentCondition,
+  keyNo,
+  isMetric,
+}) => {
   const { locationKey } = useParams();
   const [fiveDForecasts, setFiveDForecasts] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getLocalDateTime = (dateTime, getDate) => {
     if (!dateTime) return "";
@@ -22,7 +29,7 @@ const ForecastPage = ({ currentCondition, setCurrentCondition, keyNo }) => {
           ? `${hrsin24 - 12}${dateTime.slice(13, 16)} PM`
           : `0${hrsin24 - 12}${dateTime.slice(13, 16)} PM`
         : `${hrsin24}${dateTime.slice(13, 16)} AM`;
-    console.log(temp);
+    // console.log(temp);
     return temp;
   };
 
@@ -33,11 +40,12 @@ const ForecastPage = ({ currentCondition, setCurrentCondition, keyNo }) => {
         .get(
           `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${
             process.env[`REACT_APP_API_KEY${keyNo}`]
-          }&details=true&metric=true`
+          }&details=true&metric=${isMetric}`
         )
         .then((res) => {
-          console.log(res.data.DailyForecasts);
+          // console.log(res.data.DailyForecasts);
           setFiveDForecasts(res.data.DailyForecasts);
+          setIsLoading(false);
         });
     } catch (error) {
       console.log(error);
@@ -167,13 +175,16 @@ const ForecastPage = ({ currentCondition, setCurrentCondition, keyNo }) => {
             uvIndex: rawdata.UVIndex,
             uvIndexText: rawdata.UVIndexText,
           });
+          setIsLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="forecastPage">
       <div className="forecastBarCon">
         <div className="forecastBar">
@@ -188,8 +199,7 @@ const ForecastPage = ({ currentCondition, setCurrentCondition, keyNo }) => {
           </NavLink>
         </div>
       </div>
-
-      {console.log(fiveDForecasts)}
+      {/* {console.log(fiveDForecasts)} */}
       <Routes>
         <Route
           path={"today"}
@@ -200,6 +210,7 @@ const ForecastPage = ({ currentCondition, setCurrentCondition, keyNo }) => {
                 currentCondition={currentCondition}
                 todayForecast={fiveDForecasts[0]}
                 getLocalDateTime={getLocalDateTime}
+                isMetric={isMetric}
               />
             )
           }
