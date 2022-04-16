@@ -719,17 +719,18 @@ a {
 
 .settingsCon .body > * .name{
   font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .settingsCon .body > * .value{
   font-size: 1.3rem;
   display: flex;
   flex-direction: row;
-
+  font-weight: 500!important;
 }
 
 .settingsCon .toggleDiv {
-  margin: 0 0.5rem;
+  margin: 0 1.2rem;
   width: 3rem;
   height: 1.6rem;
   display: flex;
@@ -753,6 +754,10 @@ a {
 
 .settingsCon .toggleDiv.righty  {
   justify-content: right;
+}
+
+.settingsCon .value span {
+  font-weight: 400;
 }
 
 .tile{
@@ -873,24 +878,52 @@ a {
   }
 
   .currConDetailDiv .footer, .dNRDetailDiv .footer {
-  flex-direction: column;
-  gap: 0;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .currConDetailDiv .footer > *, .dNRDetailDiv .footer > *{
+    width: 100%;
+  }
+
+  .footer > .right > div {
+    border-top: 0.05rem solid rgba(173, 173, 173, 0.699);
+  }
+
+  .riseSetDetailDiv .footer .right{
+    margin-top: 1rem;
+  }
+
+  .riseSetDetailDiv .footer .right .first{
+    border: none;
+  }
+
+  .settingsCon .units {
+    flex-direction: row;
+  }
+
+  .settingsCon .units .name{
+    width: 100%;
+    text-align: left;
+  }
+
+  .settingsCon .units .value{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-weight: 400;
+  }
+
+  .settingsCon .toggleDiv {
+    min-width: 3rem;
+  }
+
+  .settingsCon .value span {
+    display: none;
+  };
+
 }
 
-.currConDetailDiv .footer > *, .dNRDetailDiv .footer > *{
-  width: 100%;
-}
 
-.footer > .right > div {
-  border-top: 0.05rem solid rgba(173, 173, 173, 0.699);
-}
-
-.riseSetDetailDiv .footer .right{
-  margin-top: 1rem;
-}
-
-.riseSetDetailDiv .footer .right .first{
-  border: none;
-}
-
-}

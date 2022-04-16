@@ -5,8 +5,6 @@ const SettingsPage = ({ setIsMetric, isMetric }) => {
     setIsMetric((prev) => !prev);
   };
 
-  const handleToggleTheme = () => {};
-
   return (
     <div className="settingsPage">
       <div className="settingsCon tile">
@@ -15,17 +13,21 @@ const SettingsPage = ({ setIsMetric, isMetric }) => {
           <div className="units">
             <div className="name">Units</div>
             <div className="value">
-              <span>Metric (&#176;C, km/h, mm)</span>
+              <div>
+                Metric<span>&ensp;(&#176;C, km/h, mm)</span>
+              </div>
               <div
                 className={`toggleDiv ${isMetric ? "lefty" : "righty"}`}
                 onClick={handleToggleUnits}
               >
                 <div className="ball"></div>
               </div>
-              <span>Imperial (&#176;F, mi/h, in)</span>
+              <div>
+                Imperial<span>&ensp;(&#176;F, mi/h, in)</span>
+              </div>
             </div>
           </div>
-          <div className="theme">
+          {/* <div className="theme">
             <div className="name">Theme</div>
             <div className="value">
               <span>Dark</span>
@@ -34,7 +36,7 @@ const SettingsPage = ({ setIsMetric, isMetric }) => {
               </div>
               <span>Light</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

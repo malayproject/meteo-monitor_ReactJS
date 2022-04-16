@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -13,9 +13,18 @@ const SideCon = ({ isSideConShown, handleSideBar, locationKey }) => {
           className="hoverable"
         />
       </div>
-      <Link to="settings">Settings</Link>
-      <Link to="/">Home</Link>
-      <Link to={`forecast/${locationKey}/today`}>Forecasts</Link>
+      <Link to="settings" onClick={() => handleSideBar("hide")}>
+        Settings
+      </Link>
+      <Link to="/" onClick={() => handleSideBar("hide")}>
+        Home
+      </Link>
+      <Link
+        to={`forecast/${locationKey}/today`}
+        onClick={() => handleSideBar("hide")}
+      >
+        Forecasts
+      </Link>
     </div>
   );
 };

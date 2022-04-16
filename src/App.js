@@ -42,6 +42,7 @@ function App() {
           isLoading={isLoading}
           currentCondition={currentCondition}
           handleSideBar={handleSideBar}
+          isMetric={isMetric}
         />
         <Routes>
           <Route

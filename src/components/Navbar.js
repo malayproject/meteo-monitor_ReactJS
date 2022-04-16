@@ -2,8 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 
-const Navbar = ({ location, isLoading, currentCondition, handleSideBar }) => {
+const Navbar = ({
+  location,
+  isLoading,
+  currentCondition,
+  handleSideBar,
+  isMetric,
+}) => {
   //   console.log(currentCondition);
+
+  const unitVal = isMetric ? "metric" : "imperial";
+
   return (
     <div className="navbar">
       <div className="left">
@@ -23,7 +32,7 @@ const Navbar = ({ location, isLoading, currentCondition, handleSideBar }) => {
               &nbsp;&emsp;
               {currentCondition.temperature.metric.value}&#176;
               <span>
-                {currentCondition.temperature.metric.unit.toLowerCase()}
+                {currentCondition.temperature[unitVal].unit.toLowerCase()}
               </span>
               {/* <img src={"./images/rainy.svg"} /> */}
               <img
