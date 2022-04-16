@@ -196,7 +196,7 @@ const LandingPage = ({
             }&q=${searchTerm}&language=en-us`
           )
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             setRecommendations(res.data);
           });
       } catch (error) {

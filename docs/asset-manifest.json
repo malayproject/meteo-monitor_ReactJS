@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/meteo-monitor_ReactJS/static/css/main.fb7b432a.css",
-    "main.js": "/meteo-monitor_ReactJS/static/js/main.41fde2dc.js",
+    "main.css": "/meteo-monitor_ReactJS/static/css/main.8c21f1ab.css",
+    "main.js": "/meteo-monitor_ReactJS/static/js/main.20967196.js",
     "static/js/787.cf49067b.chunk.js": "/meteo-monitor_ReactJS/static/js/787.cf49067b.chunk.js",
     "static/media/1644243.jpg": "/meteo-monitor_ReactJS/static/media/1644243.3c697c6cb9997d8b10b6.jpg",
     "index.html": "/meteo-monitor_ReactJS/index.html",
-    "main.fb7b432a.css.map": "/meteo-monitor_ReactJS/static/css/main.fb7b432a.css.map",
-    "main.41fde2dc.js.map": "/meteo-monitor_ReactJS/static/js/main.41fde2dc.js.map",
+    "main.8c21f1ab.css.map": "/meteo-monitor_ReactJS/static/css/main.8c21f1ab.css.map",
+    "main.20967196.js.map": "/meteo-monitor_ReactJS/static/js/main.20967196.js.map",
     "787.cf49067b.chunk.js.map": "/meteo-monitor_ReactJS/static/js/787.cf49067b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb7b432a.css",
-    "static/js/main.41fde2dc.js"
+    "static/css/main.8c21f1ab.css",
+    "static/js/main.20967196.js"
   ]
 }

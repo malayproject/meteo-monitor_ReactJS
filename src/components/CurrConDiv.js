@@ -17,12 +17,14 @@ const CurrConDiv = ({ locationKey, currentCondition, isMetric }) => {
 
   return (
     <div className="currCondDiv">
-      CURRENT WEATHER
+      <div className="header">
+        <div className="name">CURRENT WEATHER</div>
+        <div className="time">
+          {getLocalDateTime(currentCondition.dateTime, false)}
+        </div>
+      </div>
       <div className="content">
         <div className="left">
-          <div className="time">
-            {getLocalDateTime(currentCondition.dateTime, false)}
-          </div>
           <div className="icon-temp">
             <img
               src={`./images/weatherIcons/${currentCondition.weatherIcon}.png`}

@@ -21,11 +21,12 @@ const SearchResults = forwardRef(
           }}
         >
           <img src={"./images/location.svg"}></img>
-          Use current location
+          Use Current Location
         </div>
         {recommendations.map((rec) => {
           return (
             <div
+              key={rec.Key}
               className="searchResult hoverable"
               onClick={() => {
                 setLocation({
