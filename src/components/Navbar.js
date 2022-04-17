@@ -30,7 +30,7 @@ const Navbar = ({
               {/* {console.log(location)} */}
               {location.locationName}, {location.area}, {location.country}
               &nbsp;&emsp;
-              {currentCondition.temperature.metric.value}&#176;
+              {currentCondition.temperature[unitVal].value}&#176;
               <span>
                 {currentCondition.temperature[unitVal].unit.toLowerCase()}
               </span>

@@ -15,7 +15,7 @@ const Today = ({
   return (
     <div className="todayCon">
       {currentCondition && (
-        <div className="currConDetailDiv tile dark">
+        <div className="currConDetailDiv tile">
           <div className="header">
             <div className="name">CURRENT WEATHER</div>
             <div className="time">
