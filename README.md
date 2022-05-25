@@ -1,3 +1,27 @@
+## Homepage
+
+<p align="center">
+  <img src="./screenshots/meteo-homepage.JPG" />
+</p>
+
+## Searchbar
+
+<p align="center">
+  <img src="./screenshots/meteo-searchbar.JPG" />
+</p>
+
+## Today weather
+
+<p align="center">
+  <img src="./screenshots/meteo-today.JPG" />
+</p>
+
+## 5 day daily weather
+
+<p align="center">
+  <img src="./screenshots/meteo-daily-forecast.JPG" />
+</p>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
